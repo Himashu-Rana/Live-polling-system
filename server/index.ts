@@ -3,6 +3,7 @@ import express from "express";
 import { createServer as createHttpServer } from "http";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
+import { existsSync } from "fs";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { setupSocket } from "./socket";
@@ -36,8 +37,24 @@ export function createServer() {
   // Setup Socket.io
   setupSocket(server);
 
-  // Serve the SPA for development and production
-  const distPath = resolve(__dirname, "../dist/spa");
+ const possiblePaths = [
+    resolve(__dirname, "../spa"),           // Production build (dist/server/ -> dist/spa/)
+    resolve(__dirname, "../dist/spa"),      // Development (server/ -> dist/spa/)
+    resolve(__dirname, "../../dist/spa")    // Fallback
+  ];
+  
+  let distPath = possiblePaths[0]; // default
+  
+  // Find the path that actually exists
+ 
+  for (const path of possiblePaths) {
+    if (existsSync(path)) {
+      distPath = path;
+      break;
+    }
+  }
+  
+  console.log("🔍 Using distPath:", distPath);
   app.use(express.static(distPath));
 
   // Handle React Router - serve index.html for all non-API routes
