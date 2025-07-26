@@ -41,8 +41,8 @@ A real-time interactive polling system with teacher and student interfaces, buil
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/live-polling-system.git
-cd live-polling-system
+git clone https://github.com/Himashu-Rana/Live-polling-system.git
+cd Live-polling-system
 ```
 
 2. Install dependencies

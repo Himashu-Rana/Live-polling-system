@@ -37,7 +37,7 @@ export function createServer() {
   setupSocket(server);
 
   // Serve the SPA for development and production
-  const distPath = resolve(__dirname, "../../dist/spa");
+  const distPath = resolve(__dirname, "../dist/spa");
   app.use(express.static(distPath));
 
   // Handle React Router - serve index.html for all non-API routes
