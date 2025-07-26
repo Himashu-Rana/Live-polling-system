@@ -101,7 +101,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Himashu Rana** - [GitHub](https://github.com/Himashu-Rana)
+**Himanshu Rana** - [GitHub](https://github.com/Himashu-Rana)
 
 ---
 
